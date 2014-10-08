@@ -7,14 +7,14 @@ var Socket = require('../../service.lib.socket/lib/Socket'),
     client = {
       name: 'client',
       type: 'http',
+      timeout: 2000,
       pattern: 'requester'
     },
     server = {
       name: 'server',
       type: 'http',
-      protocol: 'http',
       pattern: 'responder',
-      port: 22000
+      portRange: [22000, 22001]
     };
 
 
@@ -31,16 +31,20 @@ socket.on('message', function (data, clusterSource) {
 });
 
 socket.on('connected', function (url) {
-  console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<');
+  console.log('++++++++++++++++++++++++++++++++++++++');
   console.log('connected: ', url);
 });
 
 socket.on('disconnected', function (url) {
-  console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<');
+  console.log('--------------------------------------');
   console.log('disconnected: ', url);
 });
 
-socket.connect('http://localhost:'+server.port);
+socket.on('pool_update', function (url, status) {
+  console.log('pool: ', this.pool);
+});
+
+socket.connect(server);
 //socket.connect(server.protocol+'://localhost:'+22001);
 
 setInterval(function () {
