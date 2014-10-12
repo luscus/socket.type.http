@@ -26,8 +26,8 @@ httpLib(socket);
 console.log(socket);
 
 socket.on('message', function (data, clusterSource) {
-  console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<');
-  console.log('response: ', data);
+  //console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<');
+  //console.log('response: ', data);
 });
 
 socket.on('connected', function (url) {
