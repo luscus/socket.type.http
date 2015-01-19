@@ -1,5 +1,5 @@
 // testing
-var Socket = require('../../service.lib.socket/lib/Socket'),
+var Socket = require('../../application.module.socket/lib/Socket'),
     zmqLib = require('../lib/socket.type.http'),
     service = {
       name: 'httpTest'
@@ -11,8 +11,6 @@ var Socket = require('../../service.lib.socket/lib/Socket'),
       portRange: [22000, 22001]
     };
 
-
-
 var socket = new Socket(server),
     responseCount = 0,
     maxResponse   = Math.floor(Math.random()*10);
@@ -20,6 +18,9 @@ var socket = new Socket(server),
 socket.on('listen', function (url) {
   console.log('Process "' + process.pid + '" listening on ' + url + '\nmaxResponse = ' + maxResponse);
 })
+
+
+console.log(socket);
 
 zmqLib(socket);
 

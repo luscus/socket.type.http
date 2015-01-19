@@ -1,5 +1,5 @@
 // testing
-var Socket = require('../../service.lib.socket/lib/Socket'),
+var Socket = require('../../application.module.socket/lib/Socket'),
     httpLib = require('../lib/socket.type.http'),
     service = {
       name: 'httpTest'
